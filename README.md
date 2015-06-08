@@ -1,8 +1,10 @@
 selectize facade
 ==============
 
-This if a facade of selectize.js library ( http://brianreavis.github.io/selectize.js/ ).
+This if a facade of [selectize.js library](http://brianreavis.github.io/selectize.js/).
 All the code is inside facade folder (selectize subproject)
+
+[![Gitter chat channel](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/denigma/denigma-libs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Usage
 =====
