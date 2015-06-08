@@ -1,9 +1,10 @@
-package org.denigma.selectize.extras
+package org.denigma.selectize
 
-import org.denigma.selectize.Selectize
+import org.querki.jquery.JQuery
 import org.scalajs.dom.raw.HTMLElement
 
 import scala.scalajs.js
+import scala.scalajs.js._
 import scala.scalajs.js.annotation.JSExportAll
 
 object SelectOption
@@ -33,7 +34,9 @@ trait Escaper {
 }
 
 
-
+class InputHolder extends js.Object{
+  val input:String = js.native
+}
 
 /**
  * Basic class for all selectors, contains some basic handlers and helper methods
@@ -46,7 +49,7 @@ trait Selector  {
   protected def itemRemoveHandler(value:String): Unit
 
 
-  protected def selectParams(el: HTMLElement):js.Dynamic
+  protected def selectParams(el: HTMLElement):SelectizeConfigBuilder
 
   protected def selectizeFrom(el:HTMLElement): Selectize = {
     val s = el.asInstanceOf[js.Dynamic].dyn.selectize
@@ -57,5 +60,33 @@ trait Selector  {
     case s if s==null | js.isUndefined(s)=>None
     case s=>Some(s.asInstanceOf[Selectize])
   }
+
+}
+
+class BetterDropdownPlugin(val pluginName:String)
+{
+
+  def pluginHandler(self:js.Dynamic,settings:js.Dynamic):Unit =
+  {
+    val dropDown:ThisFunction0[js.Dynamic,Unit] = positionDropdown _
+    self.positionDropdown = dropDown
+  }
+
+  def positionDropdown(self:js.Dynamic):Unit = {
+    val control = self.$control.asInstanceOf[JQuery]
+    val offset = control.asInstanceOf[js.Dynamic].position()
+    if(isUndefined(offset.top)) offset.top = 0
+    offset.top = offset.top.asInstanceOf[Double] + control.outerHeight(true)
+    self.$dropdown.css(js.Dynamic.literal(
+      //width = control.outerWidth(),
+      top   = offset.top,
+      left  = offset.left
+    ))
+
+  }
+
+  def pluginFun:ThisFunction1[js.Dynamic,js.Dynamic,Unit] = pluginHandler _
+
+  def activatePlugin() =     SelectizePlugin(pluginName)(pluginFun)
 
 }

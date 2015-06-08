@@ -1,8 +1,9 @@
 package org.denigma.preview
 
+import org.denigma.selectize.{SelectizeConfig, SORT_DIRECTION}
 import org.scalajs.dom
 import org.querki.jquery._
-import org.denigma.selectize.extras._
+import org.denigma.selectize._
 
 import scala.scalajs.js
 

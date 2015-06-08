@@ -1,7 +1,5 @@
-package org.denigma.selectize.extras
+package org.denigma.selectize
 
-import org.denigma.selectize.extras.SEARCH_CONJUNCTION
-import org.denigma.selectize.extras.SORT_DIRECTION
 import org.querki.jsext._
 
 import scala.scalajs.js
@@ -98,12 +96,18 @@ class SelectizeConfigBuilder(val dict:OptMap) extends JSOptionBuilder[SelectizeC
   def onLoad(fun:Any=>Unit): SelectizeConfigBuilder  = onLoad(fun:js.Function1[Any,Unit]) //TODO: rewrite in more typed way
   def create(onCreate:js.Function1[String,SelectOption]): SelectizeConfigBuilder = jsOpt("create",onCreate)
   def create(fun:String=>SelectOption): SelectizeConfigBuilder = this.create(fun:js.Function1[String,SelectOption])
+  def createItem(onCreate:js.Function1[String,SelectOption]): SelectizeConfigBuilder = jsOpt("createItem",onCreate)
+  def createItem(fun:String=>SelectOption): SelectizeConfigBuilder = this.createItem(fun:js.Function1[String,SelectOption])
+  def createFilter(value:String): SelectizeConfigBuilder = jsOpt("createFilter",value)
+  def createFilter(filter:js.Function1[String,Boolean]): SelectizeConfigBuilder = jsOpt("createFilter",filter)
+  def createFilter(fun:String=>Boolean): SelectizeConfigBuilder = this.createFilter(fun:js.Function1[String,Boolean])
 
   //Rendering
   def render(value:SelectRenderer) = jsOpt("render",value)
 
-
-
+  //plugins
+  def plugins(value:js.Array[String]): SelectizeConfigBuilder  = jsOpt("plugins",value)
+  def plugins(values:String*): SelectizeConfigBuilder  = plugins(js.Array(values:_*))
 
 }
 

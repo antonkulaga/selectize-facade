@@ -10,7 +10,7 @@ object Versions extends WebJarsVersions with ScalaJSVersions with SharedVersions
 
 trait ScalaJSVersions {
 
-	val selectizeFacade = "0.12.1-0.1"
+	val selectizeFacade = "0.12.1-0.2.0"
 
 	val jqueryFacade = "0.6"
 
