@@ -2,7 +2,7 @@ package org.denigma.preview
 
 import akka.actor._
 import akka.http.scaladsl.{Http, _}
-import akka.stream.ActorFlowMaterializer
+import akka.stream.ActorMaterializer
 
 /**
  * Main actor that encapsulates main application logic and starts the server
@@ -10,7 +10,7 @@ import akka.stream.ActorFlowMaterializer
 class MainActor  extends Actor with ActorLogging with Routes
 {
   implicit val system = context.system
-  implicit val materializer = ActorFlowMaterializer()
+  implicit val materializer = ActorMaterializer()
   implicit val executionContext = system.dispatcher
 
   val server: HttpExt = Http(context.system)

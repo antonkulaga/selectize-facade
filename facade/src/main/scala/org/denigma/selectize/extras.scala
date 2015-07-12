@@ -46,13 +46,13 @@ trait Selector  {
   protected def makeOption(vid:String,title:String): SelectOption
 
   protected def itemAddHandler(value:String, item:js.Dynamic): Unit
-  protected def itemRemoveHandler(value:String): Unit
 
+  protected def itemRemoveHandler(value:String): Unit
 
   protected def selectParams(el: HTMLElement):SelectizeConfigBuilder
 
   protected def selectizeFrom(el:HTMLElement): Selectize = {
-    val s = el.asInstanceOf[js.Dynamic].dyn.selectize
+    val s = el.asInstanceOf[js.Dynamic].selectize
     s.asInstanceOf[Selectize]
   }
 
@@ -87,6 +87,6 @@ class BetterDropdownPlugin(val pluginName:String)
 
   def pluginFun:ThisFunction1[js.Dynamic,js.Dynamic,Unit] = pluginHandler _
 
-  def activatePlugin() =     SelectizePlugin(pluginName)(pluginFun)
+  def activatePlugin() = SelectizePlugin(pluginName)(pluginFun)
 
 }

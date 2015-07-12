@@ -7,6 +7,7 @@ import play.twirl.api.Html
 
 import scalacss.Defaults._
 
+
 /**
  * Trait that countains routes and handlers
  */

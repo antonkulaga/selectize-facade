@@ -1,6 +1,7 @@
 package org.denigma.selectize
 
 import org.querki.jquery.JQuery
+import org.scalajs.dom.raw.HTMLElement
 
 import scala.collection.immutable.Map
 import scala.scalajs.js
@@ -28,9 +29,6 @@ object SelectizePlugin {
 }
 
 class Selectize extends js.Object {
-
-
-
 
   var settings:js.Dynamic = js.native
   var $input:JQuery = js.native
@@ -73,7 +71,7 @@ class Selectize extends js.Object {
   
   def unlock():Unit = js.native
 
-  def setupTemplates() = js.native
+  def setupTemplates():String = js.native
 
 
   /**
@@ -111,7 +109,7 @@ class Selectize extends js.Object {
    * Refreshes the list of available options shown
    * in the autocomplete dropdown menu.
    */
-  def refreshOptions(triggerDropDown:Boolean) = js.native
+  def refreshOptions(triggerDropDown:Boolean):Unit = js.native
 
 
   /**
@@ -206,7 +204,6 @@ class Selectize extends js.Object {
   //  var settings_element:js.Any = js.native
 
 
-
   /**
    * Refreshes the original <select> or <input>
    * element to reflect the current state.
@@ -242,7 +239,6 @@ class Selectize extends js.Object {
   def close:Unit = js.native
 
 
-
   /**
    * Finds the first element with a "data-value" attribute
    * that matches the given value.
@@ -265,12 +261,12 @@ class Selectize extends js.Object {
    * A helper method for inserting an element
    * at the current caret position.
    */
-  def insertAtCaret($el:JQuery) = js.native
+  def insertAtCaret($el:JQuery):Unit = js.native
 
   /**
    * Removes the current selected item(s).
   */
-  def deleteSelection(e:Any) = js.native
+  def deleteSelection(e:Any):Boolean = js.native
 
   /**
    * Selects the previous / next item (depending
