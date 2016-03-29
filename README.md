@@ -12,7 +12,7 @@ Usage
 In order to resolve a lib you should add a resolver::
 ```scala
 resolvers += sbt.Resolver.bintrayRepo("denigma", "denigma-releases") //add resolver
-libraryDependencies += "org.scalajs" %%% "selectize-facade" % "0.12.1-0.2.1" //add dependency
+libraryDependencies += "org.denigma" %%% "selectize-facade" % "0.12.1-0.2.1" //add dependency
 ```
 
 Gettings started
